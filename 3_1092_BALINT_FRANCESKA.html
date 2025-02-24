@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vizualizare date</title>
+    <link rel="stylesheet" href="3_1092_BALINT_Franceska.css">
+    <script src="3_1092_BALINT_Franceska.js" defer></script>
+</head>
+<body>
+    <h1>Vizualizare set de date pentru țările Uniunii Europene</h1>
+    <div class="left">
+        <h2>Selectați un indicator și o țară pentru a vizualiza evoluția</h2>
+        <label for="selectCountry">Țara: </label>
+        <select id="selectCountry"></select>
+        <label for="selectIndicator">Indicator: </label>
+        <select id="selectIndicator"></select>
+        <button class="btn histograma">Afișare grafic</button>
+        <div class="container-histrogram">
+            <svg
+                class="histogram"
+                width="1000"
+                height="600"
+            ></svg>
+        </div>
+        <h2>Selectați un an pentru a afișa bubble chart sau tabel</h2>
+        <label for="selectYear">An: </label>
+        <select id="selectYear"></select>
+        <button class="btn bubble">Bubble Chart</button>
+        <button class="btn tabel">Tabel</button>
+
+        <h2>Vizualizare animație bubble chart</h2>
+        <button class="btn animatie">Vizualizare animatie</button>
+        <h3 class="titlu"></h2>
+        <div class="container-canvas">
+            <canvas width="1000" height="600"></canvas>
+        </div>
+    </div>
+    <div class="right">
+        <h2 class="titluTabel"></h2>
+        <div class="container-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tara</th>
+                        <th>Pop</th>
+                        <th>PIB</th>
+                        <th>SV</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
