@@ -29,8 +29,8 @@ async function aplicatie() {
     "SE",
   ];
   const ani = [
-    2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
-    2021, 2022, 2023,
+    2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
+    2022, 2023,
   ];
   const indicatori = ["PIB", "SV", "POP"];
   let date = [];
@@ -54,9 +54,9 @@ async function aplicatie() {
   //pentru SV, POP și PIB, funcția apelează "fetchData" pentru a descărca și prelucra datele. rezultatele obținute sunt adăugate într-un vector global "date"
   async function initializareDate() {
     const datasets = [
-      { cheie: "SV", setDate: "demo_mlexpec?sex=T&age=Y1" },
-      { cheie: "POP", setDate: "demo_pjan?sex=T&age=TOTAL" },
-      { cheie: "PIB", setDate: "sdg_08_10?na_item=B1GQ&unit=CLV10_EUR_HAB" },
+      { cheie: "SV", setDate: "demo_mlexpec?sex=T&age=Y1&" },
+      { cheie: "POP", setDate: "demo_pjan?sex=T&age=TOTAL&" },
+      { cheie: "PIB", setDate: "nama_10_pc?" },
     ];
 
     for (const dataset of datasets) {
@@ -70,7 +70,7 @@ async function aplicatie() {
   async function fetchData(setDate, indicator) {
     const parteFixa =
       "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/";
-    const url = `${parteFixa}${setDate}&lastTimePeriod=15&geo=${tari.join(
+    const url = `${parteFixa}${setDate}sinceTimePeriod=2010&untilTimePeriod=2023&geo=${tari.join(
       "&geo="
     )}`;
 
@@ -108,6 +108,7 @@ async function aplicatie() {
         }
       }
     }
+    console.log(dateProcesate);
     return dateProcesate;
   }
   //populez combobox-urile cu țările, indicatorii și anii disponibili
@@ -166,8 +167,8 @@ async function aplicatie() {
     const svgElement = document.querySelector("svg");
     const rect = svgElement.getBoundingClientRect();
     svgElement.innerHTML = "";
-    const svgWidth = rect.width; 
-    const svgHeight = rect.height; 
+    const svgWidth = rect.width;
+    const svgHeight = rect.height;
     const margine = 50;
     const valMax = Math.max(...dateTaraIndicator.map((x) => x.valoare));
 
@@ -324,7 +325,7 @@ async function aplicatie() {
       //eticheta SV la jumâtatea axei Y, la o distanță de 10 de marginea stângă
       context.fillText("PIB", w / 2, h - 10);
       context.save();
-      context.translate(10, h / 2); 
+      context.translate(10, h / 2);
       context.rotate(-Math.PI / 2); //text vertical
       context.fillText("Speranța de viață", 0, 0);
       context.restore();
